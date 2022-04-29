@@ -107,7 +107,7 @@ var renderIndex = function (_app, url) { return __awaiter(void 0, void 0, void 0
         data = {
             host: url,
             routes: routes,
-            rigo: "https://github.com/Greelow-LLC/boiler-express-type/blob/master/docs/assets/rigo-baby.jpeg?raw=true",
+            rigo: "https://github.com/Greelow-LLC/boiler-express-type/blob/master/docs/assets/logo.png?raw=true",
             starter: "https://start.4geeksacademy.com/starters/express"
         };
         return [2 /*return*/, new Promise(function (resolve, reject) {
