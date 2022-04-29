@@ -7,7 +7,7 @@
     <title>Express/TypeScript Boilerplate from Greelow LLC</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
 </head>
-<body>
+<body >
     <script>
         window.onload = function(){
             let toastElm = document.getElementById('copied')
@@ -25,9 +25,9 @@
             })
         }
     </script>
-    <div style="text-align: center;">
+    <div style="text-align: center;" class="vh-100 bg-dark  ">
         <img style="max-height: 80px" src='<%= logo %>' />
-        <h1>Greelow welcomes you to your API!!</h1>
+        <h1 style="color: white;">Greelow welcomes you to your API!!</h1>
         <div style="max-width: 500px; margin: auto;">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
@@ -43,11 +43,11 @@
                 </div>
             </div>
         </div>
-        <p>Start working on your project by following the <a href="<%= starter %>" target="_blank">Quick Start</a></p>
-        <p>Remember to specify a real endpoint path like: </p>
+        <p class="text-white">Start working on your project by following the <a href="<%= starter %>" target="_blank">Quick Start</a></p>
+        <p class="text-white">Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">
             <% routes.forEach(r => { %>
-                <li><%- r.method == "GET" ? `<a href="${r.path}">GET ${r.path}</a>`: r.method+" "+r.path %></li>
+                <li class="text-white"><%- r.method == "GET" ? `<a href="${r.path}">GET ${r.path}</a>`: r.method+" "+r.path %></li>
             <% }) %>
         </ul>
     </div>
