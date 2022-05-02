@@ -53,7 +53,7 @@ $ typeorm migration:run
 ## PostgreSQL
 
 
-This will give you an auto-starting PostgreSQL server (it should auto-start every time you open a new Terminal), plus a few utility scripts that you can run in a Terminal or in a .gitpod.yml command:
+This will give you an auto-starting PostgreSQL server (it should auto-start every time you open a new Terminal), plus a few utility scripts that you can run in a Terminal:
 
 ```
 pg_start: start the PostgreSQL service
@@ -61,9 +61,18 @@ pg_stop: stop the PostgreSQL service
 pg_ctl status: check if the PostgreSQL service is running
 Once the PostgreSQL server is running, you can use the psql CLI as usual:
 
-$ psql -h localhost -d postgres
-psql (10.8 (Ubuntu 10.8-0ubuntu0.18.10.1))
 Type "help" for help.
+
+1) Connect to PostgreSQL database
+$ psql -d database -U  user -W
+2) Switch connection to a new database
+\c dbname username
+3) List available databases
+\l
+4) List available tables
+\dt
+5) Describe a table
+\d table_name
 
 postgres=#
 ```
@@ -71,17 +80,19 @@ postgres=#
 ## MySQL
 
 
-This will give you an auto-starting PostgreSQL server (it should auto-start every time you open a new Terminal), plus a few utility scripts that you can run in a Terminal or in a .gitpod.yml command:
+This will give you an auto-starting MySql server (it should auto-start every time you open a new Terminal), plus a few utility scripts that you can run in a Terminal:
 
 ```
-pg_start: start the PostgreSQL service
-pg_stop: stop the PostgreSQL service
-pg_ctl status: check if the PostgreSQL service is running
-Once the PostgreSQL server is running, you can use the psql CLI as usual:
+1) Connect to MySQL database
+mysql --host=localhost --user=myname --password=password mydb
+2) Switch connection to a new database
+use database_name;
+3) List available databases
+show databases;
+4) List available tables
+show tables;
+5) Describe a table
+describe table_name;
 
-$ psql -h localhost -d postgres
-psql (10.8 (Ubuntu 10.8-0ubuntu0.18.10.1))
-Type "help" for help.
-
-postgres=#
+mysql=#
 ```
