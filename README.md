@@ -96,3 +96,44 @@ describe table_name;
 
 mysql=#
 ```
+
+## Docker-compose
+
+
+The configuration for the docker-compose is setted in the `docker-compose.yml` file:
+
+```
+version: "3.3"
+services:
+  postgres:
+    image: postgres:14.2
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}  
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - 5432:5432
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_DEFAULT_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - 5050:80
+volumes: 
+  postgres_data: 
+    driver: local
+```
+
+You will find the environment variables in the `.env` file.
+
+Run this command in order to initialize the docker-compose:
+
+```bash
+$ docker-compose up
+```
+
+
+
