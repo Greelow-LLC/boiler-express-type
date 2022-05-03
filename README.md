@@ -21,7 +21,7 @@ const router = Router();
 router.get('/user/:id', safe(getUser));
 ```
 
-Note: please note that the `save` function must always be called before your action or the API errors will be silent
+Note: please note that the `safe` function must always be called before your action or the API errors will be silent
 
 2. Open the `actions.ts` and add or re-use one of the action functions, for example:
 
