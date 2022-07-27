@@ -38,20 +38,7 @@ app.get('/', (req, res) =>
   renderIndex(app, PUBLIC_URL).then(html => res.status(404).send(html)),
 );
 
-// Import public routes from ./src/public_routes.ts file
-// this line has to be ABOVE the JWT middleware to avoid
-// the jwt middleware to influence these enpoints
-//app.use(publicRoutes);
-
-/**
- * ⚠️ IMPORTANT
- * This is the place to include your JWT middleware that will make private routes really private
- * you can ready more about it here: https://github.com/Greelow-LLC/boiler-express-tpye/blob/master/docs/JWT_AUTHETICATION.md
- * */
-
-// Import private routes from ./src/private_routes.ts file
-// this line has to be BELOW the JWT middleware to enforce
-// all these routes to be private
+// import the routes from the ./routes/index.ts file
 
 // default empty route for 404
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));

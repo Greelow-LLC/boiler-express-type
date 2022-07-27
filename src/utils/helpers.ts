@@ -4,6 +4,8 @@ import ejs from 'ejs'; //template engine
 import axios from 'axios';
 import { Request, Response, NextFunction } from 'express';
 import { ObjectLiteral, DeepPartial, MoreThan } from 'typeorm';
+import { AppDataSource } from '../ormconfig';
+import { Errors } from '../entities/Errors';
 
 const dotenv = require('dotenv-override');
 dotenv.config({ override: true });
@@ -95,3 +97,18 @@ export class Exception extends Error {
     this.descriError = descriError || '';
   }
 }
+
+export const fetchError = async (code: number) => {
+  try {
+    return await AppDataSource.manager.findOne(Errors, {
+      where: { code },
+    });
+  } catch (error) {
+    return null;
+  }
+};
+
+export const customError = async (msg: string, code: number) => {
+  const error = await fetchError(code);
+  return new Exception(msg, error?.status || 406, error?.code, error?.descri);
+};
