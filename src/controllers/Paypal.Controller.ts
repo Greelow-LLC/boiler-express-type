@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { Request, Response } from 'express';
-import { getPaypalToken } from '../utils/paypal';
+import { getPaypalToken } from 'utils/paypal';
 
 export const handleOrderState = async (req: Request, res: Response) => {
   const { token } = req.query;

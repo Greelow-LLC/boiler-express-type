@@ -7,13 +7,11 @@ import {
   Timestamp,
   OneToOne,
 } from 'typeorm';
-import { Base } from './base/Base';
+import { Base } from 'entities/base/Base';
 
 @Entity()
 export class Users extends Base {
   @Column({ nullable: false })
-  password: string;
-
   @Column({ nullable: false })
   email: string;
 

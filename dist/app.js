@@ -7,12 +7,12 @@ require("express-async-errors"); //must always be the first, ideal for error han
 const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-const helpers_1 = require("./utils/helpers");
-const routes_1 = require("./routes");
+const helpers_1 = require("utils/helpers");
+const routes_1 = require("routes");
 var PORT = process.env.PORT || '3001';
 const PUBLIC_URL = (0, helpers_1.url)(PORT);
 const app = (0, express_1.default)();
-// create a database connection based on the ./ormconfig.ts file
+// create a database connection based on the ormconfig.ts file
 /*
 Middlewares: every time you see "app.use" we are including a new
 middleware to the express server, you can read more about middle wares here:
@@ -31,7 +31,7 @@ app.use((req, res, next) => {
 app.use((0, morgan_1.default)('dev')); //logging
 // render home website with usefull information for boilerplate developers (students)
 app.get('/', (req, res) => (0, helpers_1.renderIndex)(app, PUBLIC_URL).then(html => res.status(404).send(html)));
-// import the routes from the ./routes/index.ts file
+// import the routes from the routes/index.ts file
 app.use(routes_1.routerErrors);
 app.use(routes_1.routerStripe);
 app.use(routes_1.routerPaypal);

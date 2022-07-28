@@ -3,14 +3,14 @@ import 'express-async-errors'; //must always be the first, ideal for error handl
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { renderIndex, url } from './utils/helpers';
-import { routerErrors, routerPaypal, routerStripe } from './routes';
+import { renderIndex, url } from 'utils/helpers';
+import { routerErrors, routerPaypal, routerStripe } from 'routes';
 
 var PORT = process.env.PORT || '3001';
 const PUBLIC_URL = url(PORT);
 const app = express();
 
-// create a database connection based on the ./ormconfig.ts file
+// create a database connection based on the ormconfig.ts file
 
 /* 
 Middlewares: every time you see "app.use" we are including a new
@@ -39,7 +39,7 @@ app.get('/', (req, res) =>
   renderIndex(app, PUBLIC_URL).then(html => res.status(404).send(html)),
 );
 
-// import the routes from the ./routes/index.ts file
+// import the routes from the routes/index.ts file
 app.use(routerErrors);
 app.use(routerStripe);
 app.use(routerPaypal);

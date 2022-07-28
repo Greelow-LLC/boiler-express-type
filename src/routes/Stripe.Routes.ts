@@ -2,8 +2,8 @@ import { Router } from 'express';
 import {
   createWebHook,
   getPublishableKey,
-} from '../controllers/Stripe.Controller';
-import { safe } from '../utils/helpers';
+} from 'controllers/Stripe.Controller';
+import { safe } from 'utils/helpers';
 
 export const routerStripe = Router();
 

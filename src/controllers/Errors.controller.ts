@@ -1,8 +1,7 @@
-import { log } from 'console';
+import { Errors } from 'entities';
 import { Request, Response } from 'express';
-import { Errors } from '../entities/Errors';
-import { AppDataSource } from '../ormconfig';
-import { customError } from '../utils/helpers';
+import { AppDataSource } from 'ormconfig';
+import { customError } from 'utils/helpers';
 
 const errorsRepo = AppDataSource.getRepository(Errors);
 

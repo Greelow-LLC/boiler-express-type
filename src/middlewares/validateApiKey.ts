@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { customError } from '../utils/helpers';
+import { customError } from 'utils/helpers';
 
 const allowedPaths = ['confirm-user', 'paypal', 'stripe'];
 

@@ -1,4 +1,4 @@
-export { validateId } from './validateId';
-export { validateSchema } from './validateSchema';
-export { validateToken } from './validateToken';
-export { validateApiKey } from './validateApiKey';
+export { validateId } from 'middlewares/validateId';
+export { validateSchema } from 'middlewares/validateSchema';
+export { validateToken } from 'middlewares/validateToken';
+export { validateApiKey } from 'middlewares/validateApiKey';

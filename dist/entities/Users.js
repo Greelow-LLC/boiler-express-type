@@ -11,14 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Users = void 0;
 const typeorm_1 = require("typeorm");
-const Base_1 = require("./base/Base");
+const Base_1 = require("entities/base/Base");
 let Users = class Users extends Base_1.Base {
 };
 __decorate([
     (0, typeorm_1.Column)({ nullable: false }),
-    __metadata("design:type", String)
-], Users.prototype, "password", void 0);
-__decorate([
     (0, typeorm_1.Column)({ nullable: false }),
     __metadata("design:type", String)
 ], Users.prototype, "email", void 0);

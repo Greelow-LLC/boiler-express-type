@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import Stripe from 'stripe';
-import { stripe } from '../utils/stripe';
+import { stripe } from 'utils/stripe';
 const dotenv = require('dotenv-override');
 dotenv.config({ override: true });
 

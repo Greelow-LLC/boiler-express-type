@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { safe } from '../utils/helpers';
-import { handleOrderState } from '../controllers/Paypal.Controller';
+import { handleOrderState } from 'controllers/Paypal.Controller';
+import { safe } from 'utils/helpers';
 
 export const routerPaypal = Router();
 
