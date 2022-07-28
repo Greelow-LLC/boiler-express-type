@@ -1,5 +1,4 @@
 node_modules
-dist
 .gitpod copy.yml
 .env
 .adminbro
@@ -8,3 +7,5 @@ postgres_data
 coverage
 package-lock.json
 coverage
+dist
+dist

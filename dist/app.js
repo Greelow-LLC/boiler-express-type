@@ -34,6 +34,7 @@ app.get('/', (req, res) => (0, helpers_1.renderIndex)(app, PUBLIC_URL).then(html
 // import the routes from the ./routes/index.ts file
 app.use(routes_1.routerErrors);
 app.use(routes_1.routerStripe);
+app.use(routes_1.routerPaypal);
 // default empty route for 404
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));
 exports.default = app;
