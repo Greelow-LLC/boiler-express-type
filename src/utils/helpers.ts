@@ -51,7 +51,7 @@ export const renderIndex = async (_app: any, url: string) => {
   return new Promise((resolve, reject) => {
     // use the EJS template engine to generate the HTML/CSS
     ejs.renderFile(
-      path.join(__dirname, '../docs/assets/template.ejs'),
+      path.join(__dirname, '../../docs/assets/template.ejs'),
       data as ejs.Data,
       (err, result) => {
         if (err) {
