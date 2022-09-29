@@ -61,7 +61,7 @@
   },
   "scripts": {
     "send-email": "node -e \"require('dotenv').config(); require('./email.js').sendEmails()\"",
-    "test": "docker ps -aq | xargs -r docker stop | xargs -r docker rm && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker-compose -f 'docker-compose.yml' up -d && sleep 20 && jest -c ./jest.unit.json --maxWorkers=1",
+    "test": "NODE_PATH=src docker ps -aq | xargs -r docker stop | xargs -r docker rm && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker-compose -f 'docker-compose.yml' up -d && sleep 20 && jest -c ./jest.unit.json --maxWorkers=1",
     "test:coverage": "jest --coverage -c ./jest.unit.json",
     "lint": "eslint . --ext .ts",
     "start": "node build/index.js",
