@@ -11,6 +11,7 @@ dbConnection();
 
 app.listen(PORT, () =>
   console.log(
-    `==> 😎 Listening on port ${PORT}. Open ${PUBLIC_URL} in your browser.`,
+    `==> 😎 Listening on port ${PORT}. 
+    Open ${PUBLIC_URL} in your browser.`,
   ),
 );
