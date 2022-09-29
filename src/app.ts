@@ -4,7 +4,8 @@ import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
 import { renderIndex, url } from './utils/helpers';
-import { routerErrors, routerPaypal, routerStripe } from './routes';
+import apiRouter from './routes';
+import { validateApiKey } from './middlewares/validateApiKey';
 
 var PORT = process.env.PORT || '3001';
 const PUBLIC_URL = url(PORT);
@@ -40,9 +41,8 @@ app.get('/', (req, res) =>
 );
 
 // import the routes from the ./routes/index.ts file
-app.use(routerErrors);
-app.use(routerStripe);
-app.use(routerPaypal);
+app.use(validateApiKey);
+app.use(apiRouter);
 
 // default empty route for 404
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));

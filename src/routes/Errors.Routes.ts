@@ -10,22 +10,20 @@ import { Errors } from '../entities/Errors';
 import { validateId } from '../middlewares';
 import { safe } from '../utils/helpers';
 
-export const routerErrors = Router();
+const router = Router();
 
 // public routes
 
-routerErrors.get('/api/v1/errors', safe(getErrors));
+router.get('/', safe(getErrors));
 
-routerErrors.get('/api/v1/errors/:id', validateId(Errors), safe(getErrorById));
+router.get('/:id', validateId(Errors), safe(getErrorById));
 
 //private routes
 
-routerErrors.post('/api/v1/errors', safe(createError));
+router.post('/', safe(createError));
 
-routerErrors.put('/api/v1/errors/:id', validateId(Errors), safe(updateError));
+router.put('/:id', validateId(Errors), safe(updateError));
 
-routerErrors.delete(
-  '/api/v1/errors/:id',
-  validateId(Errors),
-  safe(deleteError),
-);
+router.delete('/:id', validateId(Errors), safe(deleteError));
+
+export default router;

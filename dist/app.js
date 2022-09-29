@@ -8,7 +8,8 @@ const express_1 = __importDefault(require("express"));
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const helpers_1 = require("./utils/helpers");
-const routes_1 = require("./routes");
+const routes_1 = __importDefault(require("./routes"));
+const validateApiKey_1 = require("./middlewares/validateApiKey");
 var PORT = process.env.PORT || '3001';
 const PUBLIC_URL = (0, helpers_1.url)(PORT);
 const app = (0, express_1.default)();
@@ -32,8 +33,8 @@ app.use((0, morgan_1.default)('dev')); //logging
 // render home website with usefull information for boilerplate developers (students)
 app.get('/', (req, res) => (0, helpers_1.renderIndex)(app, PUBLIC_URL).then(html => res.status(404).send(html)));
 // import the routes from the ./routes/index.ts file
-app.use(routes_1.routerErrors);
-app.use(routes_1.routerStripe);
+app.use(validateApiKey_1.validateApiKey);
+app.use(routes_1.default);
 // default empty route for 404
 app.use((req, res) => res.status(404).json({ message: 'Not found' }));
 exports.default = app;

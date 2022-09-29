@@ -112,3 +112,9 @@ export const customError = async (msg: string, code: number) => {
   const error = await fetchError(code);
   return new Exception(msg, error?.status || 406, error?.code, error?.descri);
 };
+
+export const importDynamicRoute = async (path: string) =>
+  (await import(path)).default;
+
+export const lowerCaseFirstLetter = (s: string):string =>
+  s.charAt(0).toLowerCase() + s.slice(1);

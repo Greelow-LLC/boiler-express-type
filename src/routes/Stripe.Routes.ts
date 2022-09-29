@@ -5,12 +5,14 @@ import {
 } from '../controllers/Stripe.Controller';
 import { safe } from '../utils/helpers';
 
-export const routerStripe = Router();
+const router = Router();
 
 // Private Routes
 
-routerStripe.get('/api/v1/stripe/get-publishable-key', safe(getPublishableKey));
+router.get('/get-publishable-key', safe(getPublishableKey));
 
-routerStripe.post('/api/v1/stripe/webhook', createWebHook);
+router.post('/webhook', createWebHook);
 
 // Public Routes
+
+export default router;
