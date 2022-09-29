@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "aws-sdk": "^2.1154.0",
+    "aws-sdk": "^2.1225.0",
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",
@@ -27,6 +27,7 @@
     "zod": "^3.17.3"
   },
   "devDependencies": {
+    "@types/aws-sdk": "^2.7.0",
     "@types/bcrypt": "^5.0.0",
     "@types/cors": "^2.8.12",
     "@types/ejs": "^3.1.1",
@@ -85,7 +86,7 @@
     "node": "14.16.1"
   },
   "keywords": [],
-  "author": "Pablo Bullor",
+  "author": "",
   "license": "ISC",
   "eslintConfig": {
     "extends": "./node_modules/standard/eslintrc.json",
