@@ -5,7 +5,7 @@ import ejs from 'ejs'; //template engine
 import { Errors } from 'entities/Errors';
 import { Request, Response, NextFunction } from 'express';
 import listEndpoints from 'express-list-endpoints'; //just a function that retrieves all the API routes
-import { AppDataSource } from 'ormconfig';
+import { findOne } from 'services';
 import { ObjectLiteral } from 'typeorm';
 
 dotenv.config();
@@ -98,9 +98,7 @@ export class Exception extends Error {
 
 export const fetchError = async (code: number) => {
   try {
-    return await AppDataSource.manager.findOne(Errors, {
-      where: { code },
-    });
+    return await findOne(Errors, { where: { code } });
   } catch (error) {
     return null;
   }
