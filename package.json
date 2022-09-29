@@ -1,5 +1,5 @@
 {
-  "name": "gift-time-backend",
+  "name": "greelow-boiler",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -83,7 +83,7 @@
     "db:drop": "npm run typeorm schema:drop"
   },
   "engines": {
-    "node": "14.16.1"
+    "node": "16.17.1"
   },
   "keywords": [],
   "author": "",
