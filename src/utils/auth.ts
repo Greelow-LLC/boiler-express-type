@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
 
@@ -20,10 +20,6 @@ export interface userTokenPayload {
   firstName: string;
   lastName: string;
   phone: string;
-  isAdmin: boolean;
-  address: string;
-  deviceToken: string;
-  loginType?: string;
 }
 
 export const createJwt = (user: userTokenPayload) => {
