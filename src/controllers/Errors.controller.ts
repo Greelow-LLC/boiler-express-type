@@ -1,5 +1,5 @@
-import { log } from 'console';
 import { Request, Response } from 'express';
+
 import { Errors } from '../entities/Errors';
 import { AppDataSource } from '../ormconfig';
 import { customError } from '../utils/helpers';
@@ -7,7 +7,7 @@ import { customError } from '../utils/helpers';
 const errorsRepo = AppDataSource.getRepository(Errors);
 
 export const getErrors = async (
-  req: Request,
+  _: Request,
   res: Response,
 ): Promise<Response> => {
   try {
@@ -80,7 +80,7 @@ export const updateError = async (
 };
 
 export const getErrorById = async (
-  req: Request,
+  _: Request,
   res: Response,
 ): Promise<Response> => {
   try {
@@ -97,7 +97,7 @@ export const getErrorById = async (
 };
 
 export const deleteError = async (
-  req: Request,
+  _: Request,
   res: Response,
 ): Promise<Response> => {
   try {

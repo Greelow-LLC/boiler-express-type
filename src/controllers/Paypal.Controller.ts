@@ -1,15 +1,15 @@
 import axios from 'axios';
 import { Request, Response } from 'express';
+
 import { getPaypalToken } from '../utils/paypal';
 
 export const handleOrderState = async (req: Request, res: Response) => {
   const { token } = req.query;
-  const { purchaseId } = req.params;
   try {
     const access_token = await getPaypalToken();
 
     if (req.params.state === 'success') {
-      const response = await axios.post(
+      await axios.post(
         `https://api-m.sandbox.paypal.com/v2/checkout/orders/${token}/capture`,
         {},
         {

@@ -1,12 +1,5 @@
-import {
-  Entity,
-  Column,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  Timestamp,
-  OneToOne,
-} from 'typeorm';
+import { Entity, Column } from 'typeorm';
+
 import { Base } from './base/Base';
 
 @Entity()

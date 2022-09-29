@@ -1,10 +1,12 @@
+import dotenv from 'dotenv';
 import { Request, Response } from 'express';
 import Stripe from 'stripe';
-import { stripe } from '../utils/stripe';
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true });
 
-export const getPublishableKey = (req: Request, res: Response): void => {
+import { stripe } from '../utils/stripe';
+
+dotenv.config();
+
+export const getPublishableKey = (_: Request, res: Response): void => {
   res.send({
     publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
   });
@@ -15,7 +17,7 @@ export const createWebHook = async (
   res: Response,
 ): Promise<void> => {
   try {
-    let event: Stripe.Event = stripe.webhooks.constructEvent(
+    const event: Stripe.Event = stripe.webhooks.constructEvent(
       req.body,
       req.headers['stripe-signature'] as Buffer | string | string[],
       process.env.STRIPE_WEBHOOK_SECRET as string,

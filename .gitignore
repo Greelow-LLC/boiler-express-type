@@ -5,4 +5,4 @@ mysql_data
 postgres_data
 coverage
 package-lock.json
-dist
+build
