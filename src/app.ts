@@ -1,15 +1,17 @@
 import 'express-async-errors'; //must always be the first, ideal for error handling
 
-import express from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
-import { renderIndex, url } from './utils/helpers';
-import apiRouter from './routes';
-import { validateApiKey } from './middlewares/validateApiKey';
+import { IncomingMessage, ServerResponse } from 'http';
 
-var PORT = process.env.PORT || '3001';
+import cors from 'cors';
+import express, { Express, RequestHandler } from 'express';
+import { validateApiKey } from 'middlewares/validateApiKey';
+import morgan from 'morgan';
+import apiRouter from 'routes';
+import { renderIndex, url } from 'utils/helpers';
+
+const PORT = process.env.PORT || '3001';
 const PUBLIC_URL = url(PORT);
-const app = express();
+const app: Express = express();
 
 // create a database connection based on the ./ormconfig.ts file
 
@@ -18,7 +20,10 @@ Middlewares: every time you see "app.use" we are including a new
 middleware to the express server, you can read more about middle wares here:
 https://developer.okta.com/blog/2018/09/13/build-and-understand-express-middleware-through-examples
 */
-app.use('/api/v1/stripe/webhook', express.raw({ type: '*/*' }));
+app.use(
+  '/api/v1/stripe/webhook',
+  express.raw({ type: '*/*' }) as RequestHandler,
+);
 app.use(cors()); //disable CORS validations
 app.use(
   (
@@ -29,14 +34,18 @@ app.use(
     if (req.originalUrl === '/api/v1/stripe/webhook') {
       next();
     } else {
-      express.json({ limit: '50mb' })(req, res, next);
+      express.json({ limit: '50mb' })(
+        req,
+        res as ServerResponse<IncomingMessage>,
+        next,
+      );
     }
   },
 );
-app.use(morgan('dev')); //logging
+app.use(morgan('dev') as RequestHandler); //logging
 
 // render home website with usefull information for boilerplate developers (students)
-app.get('/', (req, res) =>
+app.get('/', (_, res) =>
   renderIndex(app, PUBLIC_URL).then(html => res.status(404).send(html)),
 );
 
@@ -45,7 +54,7 @@ app.use(validateApiKey);
 app.use(apiRouter);
 
 // default empty route for 404
-app.use((req, res) => res.status(404).json({ message: 'Not found' }));
+app.use((_, res) => res.status(404).json({ message: 'Not found' }));
 
 export default app;
 

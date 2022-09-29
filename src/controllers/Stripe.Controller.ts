@@ -1,8 +1,7 @@
 import dotenv from 'dotenv';
 import { Request, Response } from 'express';
 import Stripe from 'stripe';
-
-import { stripe } from '../utils/stripe';
+import { stripe } from 'utils/stripe';
 
 dotenv.config();
 

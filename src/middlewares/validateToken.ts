@@ -1,14 +1,8 @@
-import jwt from 'jsonwebtoken';
 import { Response, Request, NextFunction } from 'express';
-import { customError, Exception } from '../utils/helpers';
+import jwt from 'jsonwebtoken';
+import { customError, Exception } from 'utils/helpers';
 
-const allowedPaths = [
-  'adminLogin',
-  'login',
-  'register',
-  'social',
-  'stripe/webhook',
-];
+const allowedPaths = ['stripe/webhook'];
 
 export const validateToken = async (
   req: Request,

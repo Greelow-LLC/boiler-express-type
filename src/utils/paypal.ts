@@ -1,6 +1,7 @@
 import axios from 'axios';
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true });
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export const getPaypalToken = async () => {
   const params = new URLSearchParams();

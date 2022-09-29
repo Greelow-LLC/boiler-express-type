@@ -1,7 +1,9 @@
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true }); // load .env variables
-import { DataSource } from 'typeorm';
 import { join } from 'path';
+
+import dotenv from 'dotenv';
+import { DataSource } from 'typeorm';
+
+dotenv.config(); // load .env variables
 
 export const AppDataSource = new DataSource({
   type: 'mysql',

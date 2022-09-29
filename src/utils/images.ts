@@ -1,10 +1,11 @@
-import puppeteer, { PDFOptions } from 'puppeteer';
 import fs from 'fs';
 
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true });
+import AWS from 'aws-sdk';
+import { PutObjectRequest } from 'aws-sdk/clients/s3';
+import dotenv from 'dotenv';
+import puppeteer, { PDFOptions } from 'puppeteer';
 
-const AWS = require('aws-sdk');
+dotenv.config();
 
 export type Image = {
   url: string;
@@ -31,7 +32,7 @@ export const convertToPDF = async (url: string) => {
   const pdf = await page.pdf(pdfConfig);
 
   await browser.close();
-  fs.unlink(pdfConfig.path!, err => {
+  fs.unlink(pdfConfig.path || '', err => {
     if (err) throw err;
   });
 
@@ -49,16 +50,16 @@ export const uploadPDF = async (url: string) => {
     '.' +
     type.split('/')[1];
 
-  const data = {
+  const data: PutObjectRequest = {
     Key: key,
     Body: pdf,
     ContentEncoding: 'base64',
     ContentType: `${type}`,
-    Bucket: process.env.S3_BUCKET_NAME,
+    Bucket: process.env.S3_BUCKET_NAME || '',
   };
 
   try {
-    const { Location, key } = await s3.upload(data).promise();
+    const { Location, Key: key } = await s3.upload(data).promise();
     const result: Image = {
       url: Location,
       key,
@@ -85,16 +86,16 @@ export const uploadImage = async (image: string): Promise<Image> => {
     '.' +
     type.split('/')[1];
 
-  const data = {
+  const data: PutObjectRequest = {
     Key: key,
     Body: buf,
     ContentEncoding: 'base64',
     ContentType: `${type}`,
-    Bucket: process.env.S3_BUCKET_NAME,
+    Bucket: process.env.S3_BUCKET_NAME || '',
   };
 
   try {
-    const { Location, key } = await s3.upload(data).promise();
+    const { Location, Key: key } = await s3.upload(data).promise();
     const result: Image = {
       url: Location,
       key,
@@ -107,9 +108,9 @@ export const uploadImage = async (image: string): Promise<Image> => {
 };
 
 export const deleteImage = async (key: string) => {
-  const data = {
+  const data: PutObjectRequest = {
     Key: key,
-    Bucket: process.env.S3_BUCKET_NAME,
+    Bucket: process.env.S3_BUCKET_NAME || '',
   };
   try {
     return await s3.deleteObject(data).promise();
