@@ -1,13 +1,5 @@
-import {
-  Entity,
-  Column,
-  JoinColumn,
-  ManyToOne,
-  OneToMany,
-  Timestamp,
-  OneToOne,
-} from 'typeorm';
-import { Base } from './base/Base';
+import { Base } from 'entities/base/Base';
+import { Entity, Column } from 'typeorm';
 
 @Entity()
 export class Users extends Base {

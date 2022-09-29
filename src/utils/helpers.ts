@@ -1,16 +1,14 @@
 import * as path from 'path'; // node.js internal module usefull to get file paths
-import listEndpoints from 'express-list-endpoints'; //just a function that retrieves all the API routes
+
+import dotenv from 'dotenv';
 import ejs from 'ejs'; //template engine
-import axios from 'axios';
+import { Errors } from 'entities/Errors';
 import { Request, Response, NextFunction } from 'express';
-import { ObjectLiteral, DeepPartial, MoreThan } from 'typeorm';
-import { AppDataSource } from '../ormconfig';
-import { Errors } from '../entities/Errors';
+import listEndpoints from 'express-list-endpoints'; //just a function that retrieves all the API routes
+import { AppDataSource } from 'ormconfig';
+import { ObjectLiteral } from 'typeorm';
 
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true });
-
-const AWS = require('aws-sdk');
+dotenv.config();
 
 // We need to know what will be the API host
 // in a local computer is always "localhost"
@@ -20,7 +18,7 @@ export const url = (port: string) => {
   // Gitpod has internal environment variables https://www.gitpod.io/docs/environment-variables/
   // the Workspace URL is one of them (thank God)
   if (process.env.GITPOD_WORKSPACE_URL) {
-    const [schema, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
+    const [, host] = process.env.GITPOD_WORKSPACE_URL.split('://');
     publicUrl = `https://${port}-${host}`;
   }
   return publicUrl;
@@ -31,7 +29,7 @@ export const renderIndex = async (_app: any, url: string) => {
   // loop all the endpoints that the user has generated
   const routes = listEndpoints(_app)
     .map((item: any) => {
-      let endpoints: ObjectLiteral[] = [];
+      const endpoints: ObjectLiteral[] = [];
       item.methods.forEach((e: string) => {
         endpoints.push({ method: e, path: item.path });
       });
@@ -42,7 +40,7 @@ export const renderIndex = async (_app: any, url: string) => {
     .filter((r: ObjectLiteral) => r.path != '/');
 
   // data to be sent to the home page
-  let data = {
+  const data = {
     host: url,
     routes,
     logo: 'https://github.com/Greelow-LLC/boiler-express-type/blob/master/docs/assets/logo.png?raw=true',
@@ -81,12 +79,12 @@ export const safe =
   };
 
 export class Exception extends Error {
-  status: number = 400;
-  codeError: number = 0;
-  descriError: string = '';
+  status = 400;
+  codeError = 0;
+  descriError = '';
   constructor(
     msg: string,
-    status: number = 400,
+    status = 400,
     codeError?: number,
     descriError?: string,
   ) {
@@ -116,5 +114,5 @@ export const customError = async (msg: string, code: number) => {
 export const importDynamicRoute = async (path: string) =>
   (await import(path)).default;
 
-export const lowerCaseFirstLetter = (s: string):string =>
+export const lowerCaseFirstLetter = (s: string): string =>
   s.charAt(0).toLowerCase() + s.slice(1);

@@ -1,14 +1,14 @@
-import { Router } from 'express';
 import {
   createError,
   deleteError,
   getErrorById,
   getErrors,
   updateError,
-} from '../controllers/Errors.controller';
-import { Errors } from '../entities/Errors';
-import { validateId } from '../middlewares';
-import { safe } from '../utils/helpers';
+} from 'controllers/Errors.controller';
+import { Errors } from 'entities/Errors';
+import { Router } from 'express';
+import { validateId } from 'middlewares';
+import { safe } from 'utils/helpers';
 
 const router = Router();
 

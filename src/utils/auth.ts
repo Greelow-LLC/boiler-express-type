@@ -1,9 +1,8 @@
 import bcrypt from 'bcrypt';
+import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-const dotenv = require('dotenv-override');
-dotenv.config({ override: true });
 
-const AWS = require('aws-sdk');
+dotenv.config();
 
 export const cryptPass = (password: string) => {
   const salt = bcrypt.genSaltSync(10);

@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { customError } from '../utils/helpers';
+import { customError } from 'utils/helpers';
 
 const allowedPaths = ['confirm-user', 'paypal', 'stripe'];
 
@@ -9,7 +9,7 @@ export const validateApiKey = async (
   next: NextFunction,
 ) => {
   try {
-    const apiKey = req.headers['api-key'];
+    const apiKey = req.query['api-key'];
 
     let allowPath = false;
     allowedPaths.forEach(path => {

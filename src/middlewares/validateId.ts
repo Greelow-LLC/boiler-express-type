@@ -1,10 +1,9 @@
 import { NextFunction, Request, Response } from 'express';
-import { AppDataSource } from '../ormconfig';
-import { customError } from '../utils/helpers';
+import { AppDataSource } from 'ormconfig';
+import { customError } from 'utils/helpers';
 
 export const validateId =
-  (entity: Function) =>
-  async (req: Request, res: Response, next: NextFunction) => {
+  (entity: any) => async (req: Request, res: Response, next: NextFunction) => {
     const entityName = entity.name;
 
     try {

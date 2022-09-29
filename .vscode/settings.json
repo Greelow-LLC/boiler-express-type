@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "markdown.extension.toc.omittedFromToc": {
+    "README.md": ["# Table of Contents"]
+  },
+  "markdown.extension.toc.slugifyMode": "bitbucketCloud"
+}

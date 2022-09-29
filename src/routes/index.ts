@@ -1,7 +1,7 @@
 import fs from 'fs';
 
 import { Router } from 'express';
-import { importDynamicRoute, lowerCaseFirstLetter } from '../utils/helpers';
+import { importDynamicRoute, lowerCaseFirstLetter } from 'utils/helpers';
 
 const router = Router();
 const THIS_PATH = __dirname;

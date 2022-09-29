@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
+import { fetchError } from 'utils/helpers';
 import { AnyZodObject, ZodError } from 'zod';
-import { fetchError } from '../utils/helpers';
 
 export const validateSchema =
   (schema: AnyZodObject) =>
