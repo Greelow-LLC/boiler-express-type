@@ -1,7 +1,7 @@
 {
   "name": "greelow-boiler",
   "version": "1.0.0",
-  "description": "",
+  "description": "A reusable boilerplate with Express/Typescript/typeORM for greelow projects",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.1225.0",
