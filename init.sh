@@ -37,18 +37,21 @@ cp ./.env.example ./.env
 
 echo
 echo "Installing packages..."
-npm install
+npm install &>/dev/null
 
 echo
 echo "Running migrations..."
-npm run db:drop 
-npm run db:generate 
+npm run db:start &>/dev/null
+npm run db:drop &>/dev/null
+npm run db:generate &>/dev/null
 migrations_file=$(find ./src/migrations/ -name 1*-migrations.ts)
 SUBSTRING=$(echo $migrations_file | cut -d'-' -f 1)
 FILE_NAME=$(echo $SUBSTRING | cut -d'/' -f 4)
 replace "migrations$FILE_NAME" "migrations1111111111111" $migrations_file
 mv $migrations_file ./src/migrations/1111111111111-migrations.ts
-npm run db:up
+npm run db:up &>/dev/null
+npm run db:stop &>/dev/null
+echo Migrations generated and seeded! 
 
 
 echo
