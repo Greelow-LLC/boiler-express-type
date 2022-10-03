@@ -41,10 +41,15 @@ npm install
 
 echo
 echo "Running migrations"
-npm run db:drop
-npm run db:generate
-npm run db:seed
-cp ./src/migrations/example-seed.ts 
+npm run db:drop 2>/dev/null
+npm run db:generate 2>/dev/null
+migrations_file=$(find ./src/migrations/ -name 1*-migrations.ts)
+SUBSTRING=$(echo $migrations_file | cut -d'-' -f 1)
+FILE_NAME=$(echo $SUBSTRING | cut -d'/' -f 4)
+replace "migrations$FILE_NAME" "migrations1111111111111" $migrations_file
+mv $migrations_file ./src/migrations/1111111111111-migrations.ts
+npm run db:up >/dev/null
+
 
 echo
 echo "Initializing Git…"
