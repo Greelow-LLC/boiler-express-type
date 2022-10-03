@@ -43,8 +43,8 @@ echo
 echo "Running migrations"
 npm run db:drop
 npm run db:generate
-
-
+npm run db:seed
+cp ./src/migrations/example-seed.ts 
 
 echo
 echo "Initializing Git…"
