@@ -36,13 +36,13 @@ replace "A reusable boilerplate with Express - Typescript - typeORM for greelow 
 cp ./.env.example ./.env
 
 echo
-echo "Installing packages"
-npm install
+echo "Installing packages..."
+npm install >/dev/null
 
 echo
-echo "Running migrations"
-npm run db:drop 2>/dev/null
-npm run db:generate 2>/dev/null
+echo "Running migrations..."
+npm run db:drop >/dev/null
+npm run db:generate >/dev/null
 migrations_file=$(find ./src/migrations/ -name 1*-migrations.ts)
 SUBSTRING=$(echo $migrations_file | cut -d'-' -f 1)
 FILE_NAME=$(echo $SUBSTRING | cut -d'/' -f 4)
