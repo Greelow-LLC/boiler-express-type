@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-# Initialize a new project from the current branch
-
 # replace $1 with $2 in file $3
 replace() {
   if [[ $1 != "" && $2 != "" ]]; then
@@ -9,6 +7,8 @@ replace() {
   fi
 }
 
+echo "Please, make sure you have SSH key for clonning GitHub repo." 
+echo
 echo "Ready? Let's get your info:"
 
 echo
@@ -20,27 +20,30 @@ echo "Project description?"
 read -r description
 
 echo
-echo "Initializing project…"
+echo "Initializing project..."
 echo
 
 echo "Cloning boiler..."
+echo
 git clone git@github.com:Greelow-LLC/boiler-express-type.git $name
 cd $name
 echo
 
-echo "Configuring files…"
+echo "Configuring files..."
 
 replace "greelow-boiler" "$name" "./package.json"
-replace "A reusable boilerplate with Express - Typescript - typeORM for greelow projects", "$description" "./package.json"
+replace "A reusable boilerplate with Express - Typescript - typeORM for greelow projects" "$description" "./package.json"
 
 cp ./.env.example ./.env
 
 echo
 echo "Installing packages..."
+
 npm install &>/dev/null
 
 echo
 echo "Running migrations..."
+echo
 npm run db:start &>/dev/null
 npm run db:drop &>/dev/null
 npm run db:generate &>/dev/null
@@ -55,7 +58,8 @@ echo Migrations generated and seeded!
 
 
 echo
-echo "Initializing Git…"
+echo "Initializing Git..."
+echo
 rm -rf .git
 git init
 git add . 
@@ -65,7 +69,7 @@ git branch -m develop
 cd ..
 
 echo
-echo "🥃 Project Initialized!"
+echo "Project Initialized!"
 echo
 echo "To start your project:"
 echo "cd $name"

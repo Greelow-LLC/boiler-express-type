@@ -1,7 +1,7 @@
 {
   "name": "greelow-boiler",
   "version": "1.0.0",
-  "description": "A reusable boilerplate with Express/Typescript/typeORM for greelow projects",
+  "description": "A reusable boilerplate with Express - Typescript - typeORM for greelow projects",
   "main": "index.js",
   "dependencies": {
     "aws-sdk": "^2.1225.0",
@@ -66,7 +66,6 @@
     "lint": "eslint . --ext .ts",
     "start": "node build/index.js",
     "start:prod": "NODE_ENV=production && npm run build && npm start",
-    "postinstall": "tsc",
     "watch-node": "nodemon build/index.js",
     "watch-ts": "tsc -w ",
     "dev": "NODE_PATH=src tsc-watch --noClear -p ./tsconfig.json --onSuccess \"ts-node src/index.ts\"",
