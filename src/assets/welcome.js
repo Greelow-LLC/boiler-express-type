@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+// eslint-disable-next-line no-console
 console.log(`
 
 
@@ -7,4 +9,4 @@ console.log(`
     \x1b[33m $ npm install \x1b[0m to install the packages (only once)
     \x1b[33m $ npm run start \x1b[0m to start the server
 
-`)
+`);

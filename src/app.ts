@@ -6,7 +6,7 @@ import cors from 'cors';
 import express, { Express, RequestHandler } from 'express';
 import { validateApiKey } from 'middlewares/validateApiKey';
 import morgan from 'morgan';
-import apiRouter from 'routes';
+// import apiRouter from 'routes';
 import { renderIndex, url } from 'utils/helpers';
 
 const PORT = process.env.PORT || '3001';
@@ -51,7 +51,7 @@ app.get('/', (_, res) =>
 
 // import the routes from the ./routes/index.ts file
 app.use(validateApiKey);
-app.use(apiRouter);
+// app.use(apiRouter);
 
 // default empty route for 404
 app.use((_, res) => res.status(404).json({ message: 'Not found' }));

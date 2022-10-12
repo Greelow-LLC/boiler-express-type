@@ -6,4 +6,5 @@ postgres_data
 coverage
 package-lock.json
 build
+lib
 /src/migrations/*-migrations.ts
