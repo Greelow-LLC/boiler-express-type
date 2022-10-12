@@ -43,13 +43,13 @@ export const renderIndex = async (_app: any, url: string) => {
   const data = {
     host: url,
     routes,
-    logo: 'https://github.com/Greelow-LLC/boiler-express-type/blob/master/docs/assets/logo.png?raw=true',
+    logo: 'https://raw.githubusercontent.com/Greelow-LLC/boiler-express-type/develop/docs/assets/logo.png',
     starter: 'https://start.4geeksacademy.com/starters/express',
   };
   return new Promise((resolve, reject) => {
     // use the EJS template engine to generate the HTML/CSS
     ejs.renderFile(
-      path.join(__dirname, '../assets/template.ejs'),
+      path.join(__dirname, '../../docs/assets/template.ejs'),
       data as ejs.Data,
       (err, result) => {
         if (err) {
